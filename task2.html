@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <script>
+    function addTask() {
+      var taskInput = document.getElementById("taskInput");
+      var taskList = document.getElementById("taskList");
+    
+      if (taskInput.value.trim() !== "") {
+        // Create a task container div
+        var taskContainer = document.createElement("div");
+        taskContainer.className = "task-container";
+
+        // Create a list item for the task
+        var li = document.createElement("li");
+        li.textContent = taskInput.value;
+
+        // Create a remove button
+        var removeButton = document.createElement("button");
+        removeButton.textContent = "Withdraw Task";
+        removeButton.onclick = function() {
+          // Remove the task container when withdrawing
+          taskList.removeChild(taskContainer);
+        };
+
+        // Append the task and remove button to the task container
+        taskContainer.appendChild(li);
+        taskContainer.appendChild(removeButton);
+
+        // Append the task container to the task list
+        taskList.appendChild(taskContainer);
+
+        // Clear the input field
+        taskInput.value = "";
+      } else {
+        alert("Ensure a valid task entry!");
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://i.pinimg.com/564x/7b/9a/26/7b9a263fa7c2e287e357e33788475098.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 80%;
+      margin: 20px auto;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-top: 220px;
+      font-weight: 900;
+      color: #ba4a00;
+    }
+    
+    input[type="text"] {
+      width: 50%;
+      padding: 8px;
+      margin-left: 200px;
+    }
+    
+    button {
+      padding: 8px 15px;
+      background-color: #ba4a00;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .task-container {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-left: 450px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Write down a task">
+    <button onclick="addTask()">Assign a task</button>
+    <ul id="taskList">
+      <!-- Tasks will be added here -->
+    </ul>
+  </div>
+</body>
+</html>
